@@ -40,6 +40,4 @@ module.exports = function mainController($scope,dataFactory) {
           }
         )
       }
-
-      main.getUser();
 }
