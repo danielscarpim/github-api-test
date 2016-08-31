@@ -1,0 +1,56 @@
+<div class="main">
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <h1>Search Github User</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <form ng-submit="main.getUser()">
+        <div class="input-group">
+          <input ng-model="main.username" class="input-group-field" type="text" placeholder="Type github user name" >
+          <div class="input-group-button">
+            <input type="submit" class="button" value="Search">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="user-details medium-3 columns">
+      <div ng-if="!main.user.name">
+        {{main.errors.user}}
+      </div>
+      <div class="user-picture">
+        <img ng-src="{{main.user.avatar_url}}" alt="">
+      </div>
+      <h4>{{main.user.name}}</h4>
+      <h5>{{main.user.login}}</h5>
+      <p>{{main.user.bio}}</p>
+      <p>{{main.user.location}}</p>
+      <p>{{main.user.email}}</p>
+      <p>{{main.user.blog}}</p>
+      <p>{{main.user.created_at | date}}</p>
+    </div>
+    <div class="medium-9 columns">
+      <div ng-if="!main.user.repos[0]">
+        {{main.errors.repos}}
+      </div>
+      <h3 ng-if="main.user.repos[0]">Repositories</h3>
+      <div class="repository list">
+        <div class="row" ng-repeat="repo in main.user.repos">
+          <div class="medium-12 columns">
+            <div class="callout secondary">
+            <h5><a href="{{repo.html_url}}">{{repo.name}}</a></h5>
+            <p>{{repo.description}}</p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
